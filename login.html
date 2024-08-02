@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<!-- Created By CodingNepal -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>S.B Quiz Login Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
+    <!-- Your CSS code goes here -->
+  </head>
+  
+
+  <style>
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  background: #151515;
+}
+
+.login-form {
+  position: relative;
+  width: 90%; /* Adjust this value as needed */
+  max-width: 400px; /* Adjust this value as needed */
+  margin: auto;
+  background: #1b1b1b;
+  padding: 40px 35px 60px;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: inset 0 0 1px #272727;
+}
+
+.text {
+  font-size: 30px;
+  color: #c7c7c7;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+form {
+  margin-top: 40px;
+}
+
+form .field {
+  margin-top: 20px;
+  display: flex;
+}
+
+.field .fas {
+  height: 50px;
+  width: 60px;
+  color: #868686;
+  font-size: 20px;
+  line-height: 50px;
+  border: 1px solid #444;
+  border-right: none;
+  border-radius: 5px 0 0 5px;
+  background: linear-gradient(#333, #222);
+}
+
+.field input,
+form button {
+  height: 50px;
+  width: 100%;
+  outline: none;
+  font-size: 19px;
+  color: #868686;
+  padding: 0 15px;
+  border-radius: 0 5px 5px 0;
+  border: 1px solid #444;
+  caret-color: #339933;
+  background: linear-gradient(#333, #222);
+}
+
+input:focus {
+  color: #339933;
+  box-shadow: 0 0 5px rgba(0, 255, 0, .2), inset 0 0 5px rgba(0, 255, 0, .1);
+  background: linear-gradient(#333933, #222922);
+  animation: glow .8s ease-out infinite alternate;
+}
+
+@keyframes glow {
+  0% {
+    border-color: #339933;
+    box-shadow: 0 0 5px rgba(0, 255, 0, .2), inset 0 0 5px rgba(0, 0, 0, .1);
+  }
+
+  100% {
+    border-color: #6f6;
+    box-shadow: 0 0 20px rgba(0, 255, 0, .6), inset 0 0 10px rgba(0, 255, 0, .4);
+  }
+}
+
+button {
+  margin-top: 30px;
+  border-radius: 5px!important;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+button:hover {
+  color: #339933;
+  border: 1px solid #339933;
+  box-shadow: 0 0 5px rgba(0, 255, 0, .3), 0 0 10px rgba(0, 255, 0, .2), 0 0 15px rgba(0, 255, 0, .1), 0 2px 0 black;
+}
+
+.link {
+  margin-top: 25px;
+  color: #868686;
+}
+
+.link a {
+  color: #339933;
+  text-decoration: none;
+}
+
+.link a:hover {
+  text-decoration: underline;
+}
+
+  </style>
+</head>
+<body>
+  <div class="login-form">
+    <div class="text">
+      LOGIN
+    </div>
+    <form id="loginForm">
+      <div class="field">
+        <div class="fas fa-user"></div>
+        <input type="text" id="username" placeholder="Username">
+      </div>
+      <div class="field">
+        <div class="fas fa-lock"></div>
+        <input type="password" id="password" placeholder="Password">
+      </div>
+      <button type="button" onclick="login()">LOGIN</button>
+      <div class="link">
+        Not a member?
+        <a href="https://wa.me/qr/3JMHLF4XB3L7H1?text=Hi%20TeleTech%20Hub%20Team!%20Please%20I%20want%20to%20sign%20up!" target="_blank">Signup now</a>
+    </div>
+    
+    </form>
+  </div>
+
+  <script>
+    var users = [
+      { username: "student0001", password: "eyetech250" },
+      { username: "student0002", password: "eyetech249" },
+      { username: "student0003", password: "eyetech248" },
+      { username: "student0004", password: "eyetech247" },
+      { username: "student0005", password: "eyetech246" },
+      { username: "student0006", password: "eyetech245" },
+      { username: "student0007", password: "eyetech244" },
+      { username: "student0008", password: "eyetech243" },
+      { username: "student0009", password: "eyetech242" },
+      { username: "student0010", password: "eyetech241" },
+      { username: "student0011", password: "eyetech240" },
+      { username: "student0012", password: "eyetech239" },
+      { username: "student0013", password: "eyetech238" },
+      { username: "student0014", password: "eyetech237" },
+      { username: "student0015", password: "eyetech236" },
+      { username: "student0016", password: "eyetech235" },
+      { username: "student0017", password: "eyetech234" },
+      { username: "student0018", password: "eyetech233" },
+      { username: "student0019", password: "eyetech232" },
+      { username: "student0020", password: "eyetech231" },
+      { username: "student0021", password: "eyetech230" },
+      { username: "student0022", password: "eyetech229" },
+      { username: "student0023", password: "eyetech228" },
+      { username: "student0024", password: "eyetech227" },
+      { username: "student0025", password: "eyetech226" },
+      { username: "student0026", password: "eyetech225" },
+      { username: "student0027", password: "eyetech224" },
+      { username: "student0028", password: "eyetech223" },
+      { username: "student0029", password: "eyetech222" },
+      { username: "student0030", password: "eyetech221" },
+      { username: "student0031", password: "eyetech220" },
+      { username: "student0032", password: "eyetech219" },
+      { username: "student0033", password: "eyetech218" },
+      { username: "student0034", password: "eyetech217" },
+      { username: "student0035", password: "eyetech216" },
+      { username: "student0036", password: "eyetech215" },
+      { username: "student0037", password: "eyetech214" },
+      { username: "student0038", password: "eyetech213" },
+      { username: "student0039", password: "eyetech212" },
+      { username: "student0040", password: "eyetech211" },
+      { username: "student0041", password: "eyetech210" },
+      { username: "student0042", password: "eyetech209" },
+      { username: "student0043", password: "eyetech208" },
+      { username: "student0044", password: "eyetech207" },
+      { username: "student0045", password: "eyetech206" },
+      { username: "student0046", password: "eyetech205" },
+      { username: "student0047", password: "eyetech204" },
+      { username: "student0048", password: "eyetech203" },
+      { username: "student0049", password: "eyetech202" },
+      { username: "student0050", password: "eyetech201" },
+      { username: "student0051", password: "eyetech200" },
+      { username: "student0052", password: "eyetech199" },
+      { username: "student0053", password: "eyetech198" },
+      { username: "student0054", password: "eyetech197" },
+      { username: "student0055", password: "eyetech196" },
+      { username: "student0056", password: "eyetech195" },
+      { username: "student0057", password: "eyetech194" },
+      { username: "student0058", password: "eyetech193" },
+      { username: "student0059", password: "eyetech192" },
+      { username: "student0060", password: "eyetech191" },
+      { username: "student0061", password: "eyetech190" },
+      { username: "student0062", password: "eyetech189" },
+      { username: "student0063", password: "eyetech188" },
+      { username: "student0064", password: "eyetech187" },
+      { username: "student0065", password: "eyetech186" },
+      { username: "student0066", password: "eyetech185" },
+      { username: "student0067", password: "eyetech184" },
+      { username: "student0068", password: "eyetech183" },
+      { username: "student0069", password: "eyetech182" },
+      { username: "student0070", password: "eyetech181" },
+      { username: "student0071", password: "eyetech180" },
+      { username: "student0072", password: "eyetech179" },
+      { username: "student0073", password: "eyetech178" },
+      { username: "student0074", password: "eyetech177" },
+      { username: "student0075", password: "eyetech176" },
+      { username: "student0076", password: "eyetech175" },
+      { username: "student0077", password: "eyetech174" },
+      { username: "student0078", password: "eyetech173" },
+      { username: "student0079", password: "eyetech172" },
+      { username: "student0080", password: "eyetech171" },
+      { username: "student0081", password: "eyetech170" },
+      { username: "student0082", password: "eyetech169" },
+      { username: "student0083", password: "eyetech168" },
+      { username: "student0084", password: "eyetech167" },
+      { username: "student0085", password: "eyetech166" },
+      { username: "student0086", password: "eyetech165" },
+      { username: "student0087", password: "eyetech164" },
+      { username: "student0088", password: "eyetech163" },
+      { username: "student0089", password: "eyetech162" },
+      { username: "student0090", password: "eyetech161" },
+      { username: "student0091", password: "eyetech160" },
+      { username: "student0092", password: "eyetech159" },
+      { username: "student0093", password: "eyetech158" },
+      { username: "student0094", password: "eyetech157" },
+      { username: "student0095", password: "eyetech156" },
+      { username: "student0096", password: "eyetech155" },
+      { username: "student0097", password: "eyetech154" },
+      { username: "student0098", password: "eyetech153" },
+      { username: "student0099", password: "eyetech152" },
+      { username: "student0100", password: "eyetech151" },
+      { username: "student0101", password: "eyetech150" },
+      { username: "student0102", password: "eyetech149" },
+      { username: "student0103", password: "eyetech148" },
+      { username: "student0104", password: "eyetech147" },
+      { username: "student0105", password: "eyetech146" },
+      { username: "student0106", password: "eyetech145" },
+      { username: "student0107", password: "eyetech144" },
+      { username: "student0108", password: "eyetech143" },
+      { username: "student0109", password: "eyetech142" },
+      { username: "student0110", password: "eyetech141" },
+      { username: "student0111", password: "eyetech140" },
+      { username: "student0112", password: "eyetech139" },
+      { username: "student0113", password: "eyetech138" },
+      { username: "student0114", password: "eyetech137" },
+      { username: "student0115", password: "eyetech136" },
+      { username: "student0116", password: "eyetech135" },
+      { username: "student0117", password: "eyetech134" },
+      { username: "student0118", password: "eyetech133" },
+      { username: "student0119", password: "eyetech132" },
+      { username: "student0120", password: "eyetech131" },
+      { username: "student0121", password: "eyetech130" },
+      { username: "student0122", password: "eyetech129" },
+      { username: "student0123", password: "eyetech128" },
+      { username: "student0124", password: "eyetech127" },
+      { username: "student0125", password: "eyetech126" },
+      { username: "student0126", password: "eyetech125" },
+      { username: "student0127", password: "eyetech124" },
+      { username: "student0128", password: "eyetech123" },
+      { username: "student0129", password: "eyetech122" },
+      { username: "student0130", password: "eyetech121" },
+      { username: "student0131", password: "eyetech120" },
+      { username: "student0132", password: "eyetech119" },
+      { username: "student0133", password: "eyetech118" },
+      { username: "student0134", password: "eyetech117" },
+      { username: "student0135", password: "eyetech116" },
+      { username: "student0136", password: "eyetech115" },
+      { username: "student0137", password: "eyetech114" },
+      { username: "student0138", password: "eyetech113" },
+      { username: "student0139", password: "eyetech112" },
+      { username: "student0140", password: "eyetech111" },
+      { username: "student0141", password: "eyetech110" },
+      { username: "student0142", password: "eyetech109" },
+      { username: "student0143", password: "eyetech108" },
+      { username: "student0144", password: "eyetech107" },
+      { username: "student0145", password: "eyetech106" },
+      { username: "student0146", password: "eyetech105" },
+      { username: "student0147", password: "eyetech104" },
+      { username: "student0148", password: "eyetech103" },
+      { username: "student0149", password: "eyetech102" },
+      { username: "student0150", password: "eyetech101" },
+      { username: "student0151", password: "eyetech100" },
+      { username: "student0152", password: "eyetech099" },
+      { username: "student0153", password: "eyetech098" },
+      { username: "student0154", password: "eyetech097" },
+      { username: "student0155", password: "eyetech096" },
+      { username: "student0156", password: "eyetech095" },
+      { username: "student0157", password: "eyetech094" },
+      { username: "student0158", password: "eyetech093" },
+      { username: "student0159", password: "eyetech092" },
+      { username: "student0160", password: "eyetech091" },
+      { username: "student0161", password: "eyetech090" },
+      { username: "student0162", password: "eyetech089" },
+      { username: "student0163", password: "eyetech088" },
+      { username: "student0164", password: "eyetech087" },
+      { username: "student0165", password: "eyetech086" },
+      { username: "student0166", password: "eyetech085" },
+      { username: "student0167", password: "eyetech084" },
+      { username: "student0168", password: "eyetech083" },
+      { username: "student0169", password: "eyetech082" },
+      { username: "student0170", password: "eyetech081" },
+      { username: "student0171", password: "eyetech080" },
+      { username: "student0172", password: "eyetech079" },
+      { username: "student0173", password: "eyetech078" },
+      { username: "student0174", password: "eyetech077" },
+      { username: "student0175", password: "eyetech076" },
+      { username: "student0176", password: "eyetech075" },
+      { username: "student0177", password: "eyetech074" },
+      { username: "student0178", password: "eyetech073" },
+      { username: "student0179", password: "eyetech072" },
+      { username: "student0180", password: "eyetech071" },
+      { username: "student0181", password: "eyetech070" },
+      { username: "student0182", password: "eyetech069" },
+      { username: "student0183", password: "eyetech068" },
+      { username: "student0184", password: "eyetech067" },
+      { username: "student0185", password: "eyetech066" },
+      { username: "student0186", password: "eyetech065" },
+      { username: "student0187", password: "eyetech064" },
+      { username: "student0188", password: "eyetech063" },
+      { username: "student0189", password: "eyetech062" },
+      { username: "student0190", password: "eyetech061" },
+      { username: "student0191", password: "eyetech060" },
+      { username: "student0192", password: "eyetech059" },
+      { username: "student0193", password: "eyetech058" },
+      { username: "student0194", password: "eyetech057" },
+      { username: "student0195", password: "eyetech056" },
+      { username: "student0196", password: "eyetech055" },
+      { username: "student0197", password: "eyetech054" },
+      { username: "student0198", password: "eyetech053" },
+      { username: "student0199", password: "eyetech052" },
+      { username: "student0200", password: "eyetech051" },
+      { username: "student0201", password: "eyetech050" },
+      { username: "student0202", password: "eyetech049" },
+      { username: "student0203", password: "eyetech048" },
+      { username: "student0204", password: "eyetech047" },
+      { username: "student0205", password: "eyetech046" },
+      { username: "student0206", password: "eyetech045" },
+      { username: "student0207", password: "eyetech044" },
+      { username: "student0208", password: "eyetech043" },
+      { username: "student0209", password: "eyetech042" },
+      { username: "student0210", password: "eyetech041" },
+      { username: "student0211", password: "eyetech040" },
+      { username: "student0212", password: "eyetech039" },
+      { username: "student0213", password: "eyetech038" },
+      { username: "student0214", password: "eyetech037" },
+      { username: "student0215", password: "eyetech036" },
+      { username: "student0216", password: "eyetech035" },
+      { username: "student0217", password: "eyetech034" },
+      { username: "student0218", password: "eyetech033" },
+      { username: "student0219", password: "eyetech032" },
+      { username: "student0220", password: "eyetech031" },
+      { username: "student0221", password: "eyetech030" },
+      { username: "student0222", password: "eyetech029" },
+      { username: "student0223", password: "eyetech028" },
+      { username: "student0224", password: "eyetech027" },
+      { username: "student0225", password: "eyetech026" },
+      { username: "student0226", password: "eyetech025" },
+      { username: "student0227", password: "eyetech024" },
+      { username: "student0228", password: "eyetech023" },
+      { username: "student0229", password: "eyetech022" },
+      { username: "student0230", password: "eyetech021" },
+      { username: "student0231", password: "eyetech020" },
+      { username: "student0232", password: "eyetech019" },
+      { username: "student0233", password: "eyetech018" },
+      { username: "student0234", password: "eyetech017" },
+      { username: "student0235", password: "eyetech016" },
+      { username: "student0236", password: "eyetech015" },
+      { username: "student0237", password: "eyetech014" },
+      { username: "student0238", password: "eyetech013" },
+      { username: "student0239", password: "eyetech012" },
+      { username: "student0240", password: "eyetech011" },
+      { username: "student0241", password: "eyetech010" },
+      { username: "student0242", password: "eyetech009" },
+      { username: "student0243", password: "eyetech008" },
+      { username: "student0244", password: "eyetech007" },
+      { username: "student0245", password: "eyetech006" },
+      { username: "student0246", password: "eyetech005" },
+      { username: "student0247", password: "eyetech004" },
+      { username: "student0248", password: "eyetech003" },
+      { username: "student0249", password: "eyetech002" },
+      { username: "student0250", password: "eyetech001" },
+      { username: "student0251", password: "eyetech000" },
+      { username: "student0252", password: "eyetech0001" },
+
+
+      //tutors
+      { username: "tutor001", password: "eyetech101" },
+      { username: "tutor002", password: "eyetech102" },
+      { username: "tutor003", password: "eyetech103" },
+      { username: "tutor004", password: "eyetech104" },
+      { username: "tutor005", password: "eyetech105" },
+      { username: "tutor006", password: "eyetech106" },
+      { username: "tutor007", password: "eyetech107" },
+      { username: "tutor008", password: "eyetech108" },
+      { username: "tutor009", password: "eyetech109" },
+      { username: "tutor010", password: "eyetech110" },
+
+
+      //management
+      { username: "eyecongh", password: "espicious@14" },
+      { username: "oboo_emma", password: "oboo_emma@12" },
+      { username: "iconic_browser", password: "iconic@10" },
+
+
+      //emergency
+      { username: "benneth", password: "amponsah" },
+      { username: "eyecongh14@gmail.com", password: "Espicious@14" },
+      { username: "kwaku", password: "owura" },
+
+
+      //
+      { username: "late_reg001", password: "eyetech.site001" },
+      { username: "late_reg002", password: "eyetech.site002" },
+      { username: "late_reg003", password: "eyetech.site003" },
+      { username: "late_reg004", password: "eyetech.site004" },
+      { username: "late_reg005", password: "eyetech.site005" },
+      { username: "late_reg006", password: "eyetech.site011" },
+      { username: "late_reg007", password: "eyetech.site012" },
+      { username: "late_reg008", password: "eyetech.site013" },
+      { username: "late_reg009", password: "eyetech.site014" },
+      { username: "late_reg010", password: "eyetech.site015" },
+      // Add more users as needed
+    ];
+
+    function login() {
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+      var isValidUser = false;
+
+      for (var i = 0; i < users.length; i++) {
+        if (username === users[i].username && password === users[i].password) {
+          isValidUser = true;
+          break;
+        }
+      }
+
+      if (isValidUser) {
+        // Redirect to sbquiz.html upon successful login
+        window.location.href = "benneth.html";
+      } else {
+        // Display a professional pop-up message for incorrect username or password
+        Swal.fire({
+          icon: 'error',
+          title: 'Incorrect Username or Password',
+          html: 'If this persists, <a href="https://wa.me/+233507326886?text=Please%20I%20cannot%20log%20in.%20My%20username%20is%20___%20and%20my%20password%20is%20___" target="_blank">contact Benneth</a> on WhatsApp at <a href="https://wa.me/+233507326886?text=Please%20I%20cannot%20log%20in.%20My%20username%20is%20___%20and%20my%20password%20is%20___" target="_blank">+233507326886</a>',
+          confirmButtonColor: '#339933',
+          confirmButtonText: 'OK'
+        });
+      }
+    }
+  </script>
+</body>
+</html>

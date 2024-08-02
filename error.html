@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error | TeleTech Hub</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        header h1 {
+            margin-bottom: 0.5rem;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1rem;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 160px); /* Adjust according to footer height */
+            padding: 1rem;
+        }
+
+        .error-container {
+            text-align: center;
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .error-message h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .error-message p {
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #007bff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>TeleTech Hub</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="contact.html">Contact</a>
+            <a href="about.html">About Us</a>
+        </nav>
+    </header>
+    <main>
+        <section class="error-container">
+            <div class="error-message">
+                <h2>Oops! Something went wrong.</h2>
+                <p>It looks like the page you're looking for doesn't exist or there was an error processing your request.</p>
+                <p>Error Code: 404</p>
+                <a href="index.html" class="btn">Go Back to Home</a>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 TeleTech Hub. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,3 +1,23 @@
+const validSearchTerms = ['product1', 'product2', 'product3'];
+
+// Function to handle search
+function handleSearch(query) {
+    const lowerCaseQuery = query.toLowerCase();
+    const isValid = validSearchTerms.some(term => term.toLowerCase() === lowerCaseQuery);
+
+    if (!isValid && query.trim() !== '') {
+        window.location.href = 'error.html';
+    }
+}
+
+// Add event listener to search inputs
+document.querySelectorAll('.search-input, .search-input-phone').forEach(input => {
+    input.addEventListener('input', function(event) {
+        var query = event.target.value;
+        handleSearch(query);
+    });
+});
+
 // Function to check if an element is in the viewport
 function isInViewport(el) {
     const rect = el.getBoundingClientRect();
@@ -149,4 +169,8 @@ document.addEventListener('DOMContentLoaded', function() {
         dropdownMenu.classList.remove('show');
         overlay.style.display = 'none';
     });
+});
+
+app.use((req, res, next) => {
+    res.status(404).sendFile(path.join(__dirname, 'error.html'));
 });
