@@ -1,3 +1,53 @@
+document.getElementById("imei-orders").addEventListener("click", function() {
+});
+
+document.getElementById("servers-orders").addEventListener("click", function() {
+});
+
+document.getElementById("retail-orders").addEventListener("click", function() {
+});
+
+document.getElementById("advanced-history").addEventListener("click", function() {
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Function to display the modal
+    function showModal() {
+        const modal = document.getElementById('telegramModal');
+        modal.style.display = 'block';
+    }
+
+    // Function to close the modal
+    function closeModal() {
+        const modal = document.getElementById('telegramModal');
+        modal.style.display = 'none';
+    }
+
+    // Show the modal every 5 minutes (300000 milliseconds)
+    setInterval(showModal, 300000);
+
+    // Close the modal if the user clicks outside of it
+    window.onclick = function(event) {
+        const modal = document.getElementById('telegramModal');
+        if (event.target === modal) {
+            closeModal();
+        }
+    };
+
+    // Close the modal when the "Join" button is clicked
+    document.querySelector('.modal-button').addEventListener('click', function() {
+        // Handle the "Join" button click event
+        // For example, redirect to a Telegram group or other action
+        window.location.href = 'https://t.me/teletechhub';
+    });
+
+    // Close the modal when the close button (×) is clicked
+    document.querySelector('.close-button').addEventListener('click', closeModal);
+});
+
+
+
 const validSearchTerms = ['product1', 'product2', 'product3'];
 
 // Function to handle search

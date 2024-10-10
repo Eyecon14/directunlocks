@@ -1,15 +1,175 @@
-        /* styles.css */
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #0D1117;
+    color: #eaeaea;
+    overflow-x: hidden;
+}
 
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    overflow-y: auto;
+    padding: 5px;
+}
+
+.div1, .div2, .div3, .div4, .div5, .div6, .div7 {
+    padding: 20px;
+    box-sizing: border-box;
+    border: 1px solid #1f2937;
+    background-color: #030e2c;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    width: calc(33.33% - 20px);
+    height: 200px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.div1, .div2, .div3, .div4, .div5, .div6, .div7 h2 {
+    color: #eaeaea;
+}
+
+.div1, .div2, .div3, .div4, .div5, .div6, .div7 p {
+    margin: 0;
+    font-size: 15px;
+    color: #eaeaea;
+}
+
+@media screen and (min-width: 992px) {
+    .container {
+        display: block;
+    }
+
+    .div1, .div2, .div3 {
+        display: inline-block;
+        vertical-align: top;
+        margin-right: 20px;
+    }
+
+    .div1, .div2 {
+        width: calc(33.33% - 20px);
+    }
+
+    .div3 {
+        overflow-y: auto;
+        margin-right: 0;
+    }
+
+    .div4 {
+        clear: both;
+        width: calc(100% - 20px);
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .div4 .left, .div4 .right {
+        width: calc(48% - 10px);
+        padding: 15px;
+        border: 1px solid #1f2937;
+        border-radius: 8px;
+        background-color: #1e3a8a;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .div5, .div6, .div7 {
+        width: calc(33.33% - 20px);
+        display: inline-block;
+        vertical-align: top;
+        margin-top: 20px;
+        margin-right: 20px;
+        border: 1px solid #1f2937;
+        border-radius: 8px;
+        background-color: #030e2c;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .div5 {
+        margin-right: 20px;
+    }
+
+    .div7 {
+        margin-right: 0;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .container {
+        padding: 0px;
+    }
+
+    .div1, .div2, .div3, .div4, .div5, .div6, .div7 {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .div4 {
+        margin-left: 0;
+        margin-bottom: 15px;
+    }
+}
+
+section {
+    padding: 20px;
+}
+
+.client {
+    background-color: #020613;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.client h2 {
+    margin: 0;
+    font-size: 1.8em;
+    color: #eaeaea;
+}
+
+.auth-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.auth-info p {
+    margin: 0;
+    font-size: 1em;
+    color: #eaeaea;
+    flex: 1;
+}
+
+.enable {
+    margin-left: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #1e40af;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+button:hover {
+    background-color: #1e3a8a;
+}
+
+ 
         .top-bar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 10px;
-            background-color: #f1f1f1;
+            background-color: #010005;
         }
 
         .contact-info {
@@ -19,7 +179,7 @@
         }
 
         .contact-info a {
-            color: #7a5e5e;
+            color: #a38787;
             text-decoration: none;
             font-size: 13px;
             padding: 8px;
@@ -40,17 +200,37 @@
             cursor: pointer;
         }
 
+        .desktop-menu {
+            display: flex;
+            align-items: center; /* Center items vertically */
+            justify-content: space-between; /* Space out items */
+            padding: 10px; /* Adjust padding as needed */
+            background-color: #69bdaf; /* Background color for visibility */
+            color: #fff;
+        }
+
+        .desktop-menu a {
+            display: block;
+            padding: 14px 20px;
+            text-decoration: none;
+            color: #fff;
+        }
+        
+        .desktop-menu a:hover {
+            background-color: #575757;
+        }
+
         .phone-menu {
             display: flex;
             align-items: center; /* Center items vertically */
             justify-content: space-between; /* Space out items */
             padding: 10px; /* Adjust padding as needed */
-            background-color: #fff; /* Background color for visibility */
+            background-color: #05040e; /* Background color for visibility */
         }
         
         .menu-icon {
             font-size: 24px; /* Adjust size as needed */
-            background: none;
+            background: #03103a;
             border: none;
             cursor: pointer;
         }
@@ -85,7 +265,7 @@
         .menu-item a {
             display: block;
             padding: 14px 20px;
-            color: white;
+            color: rgb(7, 4, 41);
             text-decoration: none;
         }
         
@@ -129,6 +309,61 @@
         .dropdown-menu1.show {
             display: block;
         }
+        
+        /* Ensure the dropdown menu is hidden by default */
+.dropdown-menu2 {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    padding: 0;
+    margin: 0;
+}
+
+/* Show the dropdown menu when hovering over the menu item */
+.menu-item:hover .dropdown-menu2 {
+    display: block;
+}
+
+/* Style for the dropdown menu items */
+.dropdown-menu2 li {
+    list-style-type: none;
+    padding: 8px 16px;
+    margin: 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.dropdown-menu2 li a {
+    text-decoration: none;
+    display: block;
+    color: black;
+}
+
+/* Optional: Different styles for each dropdown item */
+.imei-order a {
+    color: #1a73e8; /* Blue for IMEI Orders */
+}
+
+.server-order a {
+    color: #34a853; /* Green for Server Orders */
+}
+
+.retail-order a {
+    color: #fbbc05; /* Yellow for Retail Orders */
+}
+
+.advanced-history a {
+    color: #ea4335; /* Red for Advanced History */
+}
+
+/* Ensure the dropdown stays visible when hovering over the dropdown itself */
+.menu-item:hover .dropdown-menu2,
+.dropdown-menu2:hover {
+    display: block;
+}
+
 
         
         .dropdown-menu {
@@ -138,7 +373,7 @@
             left: 0;
             height: 100%;
             width: 300px; /* Adjust width as needed */
-            background-color: #fff;
+            background-color: #060425;
             border-right: 1px solid #ddd;
             box-shadow: 2px 0 5px rgba(0,0,0,0.2);
             padding: 20px;
@@ -159,7 +394,7 @@
             display: block;
             padding: 15px;
             text-decoration: none;
-            color: #333; /* Ensure text color is visible */
+            color: #27b6bb; /* Ensure text color is visible */
             font-size: 16px;
             border-radius: 5px;
             transition: background-color 0.3s;
@@ -170,7 +405,7 @@
         }
 
         .menu-top {
-            background: #007bff;
+            background: #81a5cc;
             color: #fff;
             display: flex;
             align-items: center;
@@ -241,6 +476,68 @@
     transform: translateY(0); /* Move to original position */
 }
 
+/* Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 300px; /* Adjust as needed */
+    text-align: center;
+    position: relative; /* Needed for positioning the close button */
+}
+
+.modal-image {
+    width: 290px; /* Adjust size as needed */
+    height: 270px;
+}
+
+.modal-button {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal-button:hover {
+    background-color: #45a049;
+}
+
+/* Close Button Styles */
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 
         .spacer {
             height: 20px; /* Space between top and subsequent items */
@@ -283,17 +580,17 @@
         }
 
         .login-top a {
-            color: #44031e; /* White color for login link */
+            color: #0d0344; /* White color for login link */
             display: flex;
-            border: 2px solid #500433;
+            border: 2px solid #942f6d;
             align-items: center;
         }
 
         .login-top a i {
-            background-color: #41062a;
+            background-color: #f0e8ed;
             margin-right: 8px; /* Space between icon and text */
-            color: #fff; /* White color for padlock icon */
-            border: 2px solid #49092c;
+            color: #04010e; /* White color for padlock icon */
+            border: 2px solid #851854;
         }
 
         .contact-info-phone {
@@ -341,7 +638,7 @@
             display: flex;
             align-items: center;
             padding: 10px;
-            background-color: #881579;
+            background-color: #e4e3f7;
             justify-content: space-between; /* This will push items to the left and right */
         }
         
@@ -359,7 +656,7 @@
             width: 300px; /* Adjust width as needed */
             padding: 10px;
             font-size: 16px;
-            border: 1px solid #ddd;
+            border: 1px solid #03051f;
             border-radius: 5px;
         }
 
@@ -409,46 +706,7 @@
     transition: transform 0.6s ease-out, opacity 0.6s ease-out; /* Animation properties */
 }
 
-/* Animation class to shake */
-.shake-animation {
-    animation: shake 0.7s ease-in-out forwards;
-}
 
-/* Keyframes for shaking animation */
-@keyframes shake {
-    0% { transform: translateX(0); }
-    25% { transform: translateX(-10px); }
-    50% { transform: translateX(10px); }
-    75% { transform: translateX(-10px); }
-    100% { transform: translateX(0); }
-}
-
-/* Styling for the heading and paragraph */
-.shake-text-box h3 {
-    color: #03103a;
-    margin-top: 0;
-    font-size: 29px; /* Adjust font size */
-    font-weight: bold;
-}
-
-.shake-text-box p {
-    font-size: 14px; /* Adjust font size */
-    line-height: 1.5;
-}
-
-
-/*Guarantee For Text*/
-.guarantee {
-    font-size: 20px;
-    border-radius: 20px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* Deeper shadow for emphasis */
-    overflow: hidden;
-    text-align: center; /* Center align text */
-    padding: 10px;
-    margin: 10px;
-}
-
-/* styles.css */
 
 /* Common styles for both phone and laptop screens */
 .typing-text {
@@ -610,7 +868,7 @@
 
         /* Footer styling */
 .footer {
-    background-color: #333; /* Dark background for contrast */
+    background-color: #02000a; /* Dark background for contrast */
     color: #fff; /* White text color */
     padding: 20px 0;
     font-family: Arial, sans-serif; /* Font for the footer */
@@ -671,6 +929,6 @@
 .footer-bottom {
     text-align: center;
     padding: 10px 0;
-    background-color: #222; /* Slightly darker background for bottom */
+    background-color: #020222; /* Slightly darker background for bottom */
     font-size: 12px; /* Smaller text size */
 }
