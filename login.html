@@ -3,297 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DirectUnlock</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Login</title>
     <style>
-      @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
-      * {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
-          font-family: 'Poppins', sans-serif;
-      }
-
-      body {
-        font-family: 'Helvetica', sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
-        margin: 0;
-    }
-    
-    .box {
-        background: white;
-        padding: 40px;
-        border-radius: 10px;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        max-width: 400px;
-        width: 100%;
-        transition: all 0.3s ease-in-out;
-    }
-    
-    .box:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-    }
-    
-    .form h2 {
-        margin: 0 0 20px;
-        font-size: 26px;
-        color: #333;
-        text-align: center;
-    }
-    
-    .inputbox {
-        position: relative;
-        margin: 30px 0;
-    }
-    
-    .inputbox input {
-        width: 100%;
-        padding: 15px;
-        background: #e6e6e6;
-        border: none;
-        border-radius: 8px;
-        font-size: 18px;
-        color: #333;
-        outline: none;
-        transition: background 0.3s ease;
-    }
-    
-    .inputbox input:focus {
-        background: #fff;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    }
-    
-    .inputbox span {
-        position: absolute;
-        left: 15px;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 18px;
-        color: #999;
-        transition: all 0.3s;
-        pointer-events: none;
-    }
-    
-    .inputbox input:focus + span,
-    .inputbox input:not(:placeholder-shown) + span {
-        top: -10px;
-        left: 15px;
-        font-size: 14px;
-        color: #333;
-    }
-    
-    .sub {
-        width: 100%;
-        padding: 15px;
-        background: #ff7e5f;
-        border: none;
-        border-radius: 8px;
-        font-size: 18px;
-        color: white;
-        cursor: pointer;
-        transition: all 0.3s;
-    }
-    
-    .sub:hover {
-        background: #feb47b;
-    }
-    
-    .not-yet {
-        text-align: center;
-        margin: 20px 0 0;
-        font-size: 14px;
-    }
-    
-    .not-yet a {
-        color: #ff7e5f;
-        text-decoration: none;
-        transition: color 0.3s;
-    }
-    
-    .not-yet a:hover {
-        color: #feb47b;
-    }
-    
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-    }
-    
-    .modal-content {
-        background: white;
-        margin: 15% auto;
-        padding: 20px;
-        border-radius: 10px;
-        width: 80%;
-        max-width: 500px;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        text-align: center;
-    }
-    
-    .modal-content h2 {
-        margin-top: 0;
-    }
-    
-    button {
-        background: #ff7e5f;
-        border: none;
-        color: white;
-        padding: 12px 24px;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background 0.3s;
-    }
-    
-    button:hover {
-        background: #feb47b;
-    }
-    
-    @media (max-width: 768px) {
-        .box {
+        /* Basic styling for the form container */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        form {
+            background-color: white;
             padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
         }
-    
-        .modal-content {
-            margin: 20% auto;
-            width: 90%;
+
+        /* Style for form labels */
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+            font-size: 14px;
         }
-    }
-    
-    
+
+        /* Style for input fields */
+        input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        /* Style for the submit button */
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Small screen adjustments */
+        @media (max-width: 400px) {
+            form {
+                width: 100%;
+                padding: 15px;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="box">
-        <div class="form">
-            <h2>Login Form</h2>
-            <form id="loginForm">
-                <div class="inputbox">
-                    <input type="text" id="username" required>
-                    <span>👤 Username</span>
-                </div>
-                <div class="inputbox">
-                    <input type="email" id="email" required>
-                    <span>📧 E-mail</span>
-                </div>
-                <div class="inputbox">
-                    <input type="password" id="phone" required>
-                    <span>🔒 Password</span>
-                    <button type="button" id="togglePhoneVisibility"></button>
-                </div>
-                <input type="submit" value="LOGIN" class="sub" id="submit">
+    <form>
+        <label for="email">Email</label>
+        <input type="email" placeholder="Enter your email" id="email" required>
 
-                <div class="not-yet">
-                  Do not have an account yet? <a href="process.html">Sign-up</a>
-                </div>
-            </form>
-        </div>
-    </div>
-    
-    <!-- The Modal -->
-    <div id="successModal" class="modal">
-        <div class="modal-content">
-            <h2>Success! 🎉</h2>
-            <p>*You have successfully login!*</p>
-            <button id="modalButton">OK 👍</button>
-        </div>
-    </div>
+        <label for="password">Password</label>
+        <input type="password" placeholder="Enter your password" id="password" required>
 
-        <!-- The Modal -->
-        <div id="errorModal" class="modal">
-            <div class="modal-content">
-                <h2>Wrong Credentials</h2>
-                <p>Please try again or sign up.</p>
-                <button id="tryAgainButton">Try Again</button>
-                <button id="signupButton">Sign up</button>
-            </div>
-        </div>
+        <button id="login" type="submit">Login</button>
+    </form>
 
     <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.4/firebase-app.js";
-        import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/9.6.4/firebase-database.js";
-    
+        // Import the Firebase functions from the SDK
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
+        
+        // Your web app's Firebase configuration
         const firebaseConfig = {
-            apiKey: "AIzaSyAJE5CaaFJDlEt4_snZQR8pbpgh7JTcBaw",
-            authDomain: "creativetutorial-e5d5e.firebaseapp.com",
-            projectId: "creativetutorial-e5d5e",
-            storageBucket: "creativetutorial-e5d5e.appspot.com",
-            messagingSenderId: "786862672314",
-            appId: "1:786862672314:web:c21463b2c5a2ac37eb3583"
+            apiKey: "AIzaSyD2nAw8Z1W7KIIKFvBqsmg2B8Oa0iZx39Y",
+            authDomain: "directunlock-cfbc3.firebaseapp.com",
+            databaseURL: "https://directunlock-cfbc3-default-rtdb.firebaseio.com",
+            projectId: "directunlock-cfbc3",
+            storageBucket: "directunlock-cfbc3.appspot.com",
+            messagingSenderId: "657888584931",
+            appId: "1:657888584931:web:df4723112e4cd61e1851d6",
+            measurementId: "G-Y3ZCNRVZCN"
         };
-    
+
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
-    
-        // Get a reference to the database service
-        const db = getDatabase(app);
-    
-        // Toggle button for phone number visibility
-        const phoneInput = document.getElementById('phone');
-        const toggleButton = document.getElementById('togglePhoneVisibility');
-    
-        toggleButton.addEventListener('click', function() {
-            const type = phoneInput.getAttribute('type') === 'password' ? 'text' : 'password';
-            phoneInput.setAttribute('type', type);
-            toggleButton.textContent = type === 'password' ? 'View' : 'Hide';
+        const auth = getAuth(app);
+
+        // Login button functionality
+        const loginButton = document.getElementById('login');
+        loginButton.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            // Get input values
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Sign in the user with email and password
+            signInWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    // Signed in successfully
+                    const user = userCredential.user;
+                    alert("Logged in successfully!");
+                    // You can redirect the user to the homepage or dashboard here
+                    window.location.href = 'welcome.html'; // Example
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    alert("Error: " + errorMessage);
+                });
         });
-    
-        document.getElementById("loginForm").addEventListener('submit', function(e){
-            e.preventDefault();
-    
-            const username = document.getElementById("username").value;
-            const email = document.getElementById("email").value;
-            const phone = document.getElementById("phone").value;
-    
-            // Retrieve data from Firebase for comparison
-            const usersRef = ref(db, 'users/');
-            get(usersRef).then((snapshot) => {
-                let authenticated = false;
-                snapshot.forEach((childSnapshot) => {
-                    const user = childSnapshot.val();
-                    if (user.username === username && user.email === email && user.phoneNumber === phone) {
-                        authenticated = true;
-                    }
-                });
-    
-                if (authenticated) {
-                    // Show modal dialog
-                    const modal = document.getElementById("successModal");
-                    modal.style.display = "block";
-                    
-                    // Handle button click to redirect to login page
-                    document.getElementById("modalButton").onclick = function() {
-                        window.location.href = "welcome.html";
-                    }
-                } else {
-                // Show error modal
-                const errorModal = document.getElementById("errorModal");
-                errorModal.style.display = "block";
-                        }
-                    }).catch((error) => {
-                        console.error("Error retrieving data: ", error);
-                    });
-                });
-
-                // Close error modal and handle options
-                document.getElementById("tryAgainButton").addEventListener('click', function() {
-                    const errorModal = document.getElementById("errorModal");
-                    errorModal.style.display = "none";
-                });
-
-                document.getElementById("signupButton").addEventListener('click', function() {
-                    window.location.href = "process.html"; // Redirect to sign up page
-                });
     </script>
-    
+</body>
+</html>
