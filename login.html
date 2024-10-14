@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16x16.png">
+    <link rel="manifest" href="icons/site.webmanifest">
     <style>
         /* Basic styling for the form container */
         body {
@@ -15,8 +19,9 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            position: relative;
         }
-        
+
         form {
             background-color: white;
             padding: 20px;
@@ -68,9 +73,98 @@
                 padding: 15px;
             }
         }
+
+        /* Modal styling */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1;
+            left: 50%; /* Position from the left */
+            top: 50%; /* Position from the top */
+            transform: translate(-50%, -50%); /* Adjust position to center */
+            width: 300px; /* Set a width */
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+        }
+        
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+
+        .modal-content h2 {
+            margin-top: 0;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover, .close:focus {
+            color: black;
+        }
+
+        /* Button for modals */
+        .modal-button {
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .modal-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Link styles for additional actions */
+        .extra-links {
+            margin-top: 10px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .extra-links a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .extra-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Spinner styling */
+        .spinner {
+            display: none; /* Hidden by default */
+            position: relative;
+            width: 20px; /* Smaller size */
+            height: 20px; /* Smaller size */
+            border: 4px solid #f3f3f3; /* Light grey */
+            border-top: 4px solid #3498db; /* Blue */
+            border-radius: 50%;
+            animation: spin 1s linear infinite; /* Animation */
+            margin: 0 auto; /* Center the spinner */
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
     </style>
 </head>
 <body>
+    <!-- Login Form -->
     <form>
         <label for="email">Email</label>
         <input type="email" placeholder="Enter your email" id="email" required>
@@ -79,13 +173,40 @@
         <input type="password" placeholder="Enter your password" id="password" required>
 
         <button id="login" type="submit">Login</button>
+        <div class="spinner" id="spinner"></div>
+        
+        <div class="extra-links">
+            <p><a href="process.html">Don't have an account? Sign up</a></p>
+            <p><a href="reset_password.html">Forgot Password? Reset</a></p>
+            <p><a href="http://t.me/DirectUnlockz">Facing difficulties? Contact Owner</a></p>
+        </div>
     </form>
+
+    <!-- Modal for Successful Login -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeSuccess">&times;</span>
+            <h2>Login Successful</h2>
+            <p>You have logged in successfully!</p>
+            <button class="modal-button" id="okSuccess">OK</button>
+        </div>
+    </div>
+
+    <!-- Modal for Invalid Credentials -->
+    <div id="errorModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeError">&times;</span>
+            <h2>Invalid Credentials</h2>
+            <p>Please check your email or password and try again.</p>
+            <button class="modal-button" id="okError">OK</button>
+        </div>
+    </div>
 
     <script type="module">
         // Import the Firebase functions from the SDK
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
         import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-auth.js";
-        
+
         // Your web app's Firebase configuration
         const firebaseConfig = {
             apiKey: "AIzaSyD2nAw8Z1W7KIIKFvBqsmg2B8Oa0iZx39Y",
@@ -102,28 +223,68 @@
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
 
-        // Login button functionality
+        // Grab the necessary elements
         const loginButton = document.getElementById('login');
-        loginButton.addEventListener("click", function (event) {
-            event.preventDefault();
+        const successModal = document.getElementById('successModal');
+        const errorModal = document.getElementById('errorModal');
+        const closeSuccess = document.getElementById('closeSuccess');
+        const closeError = document.getElementById('closeError');
+        const okSuccess = document.getElementById('okSuccess');
+        const okError = document.getElementById('okError');
+        const spinner = document.getElementById('spinner');
 
-            // Get input values
+        // Close modal functions
+        closeSuccess.onclick = function() {
+            successModal.style.display = "none";
+        }
+
+        closeError.onclick = function() {
+            errorModal.style.display = "none";
+        }
+
+        okSuccess.onclick = function() {
+            successModal.style.display = "none";
+            window.location.href = 'welcome.html'; // Redirect to welcome page
+        }
+
+        okError.onclick = function() {
+            errorModal.style.display = "none";
+        }
+
+        // When clicking outside the modal, close it
+        window.onclick = function(event) {
+            if (event.target === successModal) {
+                successModal.style.display = "none";
+            }
+            if (event.target === errorModal) {
+                errorModal.style.display = "none";
+            }
+        }
+
+        // Login button functionality
+        loginButton.addEventListener("click", function (event) {
+            event.preventDefault(); // Prevent form submission
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
 
-            // Sign in the user with email and password
+            // Show the spinner and hide the button text
+            spinner.style.display = "block";
+            loginButton.style.display = "none"; // Hide login button text
+
+            // Sign in the user
             signInWithEmailAndPassword(auth, email, password)
                 .then((userCredential) => {
-                    // Signed in successfully
-                    const user = userCredential.user;
-                    alert("Logged in successfully!");
-                    // You can redirect the user to the homepage or dashboard here
-                    window.location.href = 'welcome.html'; // Example
+                    // After 3 seconds, show success modal
+                    setTimeout(() => {
+                        spinner.style.display = "none"; // Hide spinner
+                        successModal.style.display = "block"; // Show success modal
+                    }, 3000); // 3 seconds delay
                 })
                 .catch((error) => {
-                    const errorCode = error.code;
-                    const errorMessage = error.message;
-                    alert("Error: " + errorMessage);
+                    // Handle Errors here
+                    spinner.style.display = "none"; // Hide spinner
+                    loginButton.style.display = "block"; // Show login button text
+                    errorModal.style.display = "block"; // Show error modal
                 });
         });
     </script>
